@@ -11,12 +11,15 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AlertsRouteImport } from './routes/alerts'
+import { Route as AqiRouteImport } from './routes/aqi'
 import { Route as FirstAidRouteImport } from './routes/first-aid'
 import { Route as HistoryRouteImport } from './routes/history'
 import { Route as HomeRouteImport } from './routes/home'
 import { Route as HospitalsRouteImport } from './routes/hospitals'
 import { Route as ReportRouteImport } from './routes/report'
+import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as TriageRouteImport } from './routes/triage'
+import { Route as VoiceRouteImport } from './routes/voice'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -26,6 +29,11 @@ const IndexRoute = IndexRouteImport.update({
 const AlertsRoute = AlertsRouteImport.update({
   id: '/alerts',
   path: '/alerts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AqiRoute = AqiRouteImport.update({
+  id: '/aqi',
+  path: '/aqi',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FirstAidRoute = FirstAidRouteImport.update({
@@ -53,85 +61,116 @@ const ReportRoute = ReportRouteImport.update({
   path: '/report',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TriageRoute = TriageRouteImport.update({
   id: '/triage',
   path: '/triage',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VoiceRoute = VoiceRouteImport.update({
+  id: '/voice',
+  path: '/voice',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/alerts': typeof AlertsRoute
+  '/aqi': typeof AqiRoute
   '/first-aid': typeof FirstAidRoute
   '/history': typeof HistoryRoute
   '/home': typeof HomeRoute
   '/hospitals': typeof HospitalsRoute
   '/report': typeof ReportRoute
+  '/settings': typeof SettingsRoute
   '/triage': typeof TriageRoute
+  '/voice': typeof VoiceRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/alerts': typeof AlertsRoute
+  '/aqi': typeof AqiRoute
   '/first-aid': typeof FirstAidRoute
   '/history': typeof HistoryRoute
   '/home': typeof HomeRoute
   '/hospitals': typeof HospitalsRoute
   '/report': typeof ReportRoute
+  '/settings': typeof SettingsRoute
   '/triage': typeof TriageRoute
+  '/voice': typeof VoiceRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/alerts': typeof AlertsRoute
+  '/aqi': typeof AqiRoute
   '/first-aid': typeof FirstAidRoute
   '/history': typeof HistoryRoute
   '/home': typeof HomeRoute
   '/hospitals': typeof HospitalsRoute
   '/report': typeof ReportRoute
+  '/settings': typeof SettingsRoute
   '/triage': typeof TriageRoute
+  '/voice': typeof VoiceRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/alerts'
+    | '/aqi'
     | '/first-aid'
     | '/history'
     | '/home'
     | '/hospitals'
     | '/report'
+    | '/settings'
     | '/triage'
+    | '/voice'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/alerts'
+    | '/aqi'
     | '/first-aid'
     | '/history'
     | '/home'
     | '/hospitals'
     | '/report'
+    | '/settings'
     | '/triage'
+    | '/voice'
   id:
     | '__root__'
     | '/'
     | '/alerts'
+    | '/aqi'
     | '/first-aid'
     | '/history'
     | '/home'
     | '/hospitals'
     | '/report'
+    | '/settings'
     | '/triage'
+    | '/voice'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AlertsRoute: typeof AlertsRoute
+  AqiRoute: typeof AqiRoute
   FirstAidRoute: typeof FirstAidRoute
   HistoryRoute: typeof HistoryRoute
   HomeRoute: typeof HomeRoute
   HospitalsRoute: typeof HospitalsRoute
   ReportRoute: typeof ReportRoute
+  SettingsRoute: typeof SettingsRoute
   TriageRoute: typeof TriageRoute
+  VoiceRoute: typeof VoiceRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -148,6 +187,13 @@ declare module '@tanstack/react-router' {
       path: '/alerts'
       fullPath: '/alerts'
       preLoaderRoute: typeof AlertsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/aqi': {
+      id: '/aqi'
+      path: '/aqi'
+      fullPath: '/aqi'
+      preLoaderRoute: typeof AqiRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/first-aid': {
@@ -185,11 +231,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ReportRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/triage': {
       id: '/triage'
       path: '/triage'
       fullPath: '/triage'
       preLoaderRoute: typeof TriageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/voice': {
+      id: '/voice'
+      path: '/voice'
+      fullPath: '/voice'
+      preLoaderRoute: typeof VoiceRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -198,12 +258,15 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AlertsRoute: AlertsRoute,
+  AqiRoute: AqiRoute,
   FirstAidRoute: FirstAidRoute,
   HistoryRoute: HistoryRoute,
   HomeRoute: HomeRoute,
   HospitalsRoute: HospitalsRoute,
   ReportRoute: ReportRoute,
+  SettingsRoute: SettingsRoute,
   TriageRoute: TriageRoute,
+  VoiceRoute: VoiceRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
