@@ -11,8 +11,12 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AlertsRouteImport } from './routes/alerts'
+import { Route as FirstAidRouteImport } from './routes/first-aid'
 import { Route as HistoryRouteImport } from './routes/history'
 import { Route as HomeRouteImport } from './routes/home'
+import { Route as HospitalsRouteImport } from './routes/hospitals'
+import { Route as ReportRouteImport } from './routes/report'
+import { Route as TriageRouteImport } from './routes/triage'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,6 +26,11 @@ const IndexRoute = IndexRouteImport.update({
 const AlertsRoute = AlertsRouteImport.update({
   id: '/alerts',
   path: '/alerts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FirstAidRoute = FirstAidRouteImport.update({
+  id: '/first-aid',
+  path: '/first-aid',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HistoryRoute = HistoryRouteImport.update({
@@ -34,39 +43,95 @@ const HomeRoute = HomeRouteImport.update({
   path: '/home',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HospitalsRoute = HospitalsRouteImport.update({
+  id: '/hospitals',
+  path: '/hospitals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReportRoute = ReportRouteImport.update({
+  id: '/report',
+  path: '/report',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TriageRoute = TriageRouteImport.update({
+  id: '/triage',
+  path: '/triage',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/alerts': typeof AlertsRoute
+  '/first-aid': typeof FirstAidRoute
   '/history': typeof HistoryRoute
   '/home': typeof HomeRoute
+  '/hospitals': typeof HospitalsRoute
+  '/report': typeof ReportRoute
+  '/triage': typeof TriageRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/alerts': typeof AlertsRoute
+  '/first-aid': typeof FirstAidRoute
   '/history': typeof HistoryRoute
   '/home': typeof HomeRoute
+  '/hospitals': typeof HospitalsRoute
+  '/report': typeof ReportRoute
+  '/triage': typeof TriageRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/alerts': typeof AlertsRoute
+  '/first-aid': typeof FirstAidRoute
   '/history': typeof HistoryRoute
   '/home': typeof HomeRoute
+  '/hospitals': typeof HospitalsRoute
+  '/report': typeof ReportRoute
+  '/triage': typeof TriageRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/alerts' | '/history' | '/home'
+  fullPaths:
+    | '/'
+    | '/alerts'
+    | '/first-aid'
+    | '/history'
+    | '/home'
+    | '/hospitals'
+    | '/report'
+    | '/triage'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/alerts' | '/history' | '/home'
-  id: '__root__' | '/' | '/alerts' | '/history' | '/home'
+  to:
+    | '/'
+    | '/alerts'
+    | '/first-aid'
+    | '/history'
+    | '/home'
+    | '/hospitals'
+    | '/report'
+    | '/triage'
+  id:
+    | '__root__'
+    | '/'
+    | '/alerts'
+    | '/first-aid'
+    | '/history'
+    | '/home'
+    | '/hospitals'
+    | '/report'
+    | '/triage'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AlertsRoute: typeof AlertsRoute
+  FirstAidRoute: typeof FirstAidRoute
   HistoryRoute: typeof HistoryRoute
   HomeRoute: typeof HomeRoute
+  HospitalsRoute: typeof HospitalsRoute
+  ReportRoute: typeof ReportRoute
+  TriageRoute: typeof TriageRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -85,6 +150,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AlertsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/first-aid': {
+      id: '/first-aid'
+      path: '/first-aid'
+      fullPath: '/first-aid'
+      preLoaderRoute: typeof FirstAidRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/history': {
       id: '/history'
       path: '/history'
@@ -99,14 +171,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/hospitals': {
+      id: '/hospitals'
+      path: '/hospitals'
+      fullPath: '/hospitals'
+      preLoaderRoute: typeof HospitalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/report': {
+      id: '/report'
+      path: '/report'
+      fullPath: '/report'
+      preLoaderRoute: typeof ReportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/triage': {
+      id: '/triage'
+      path: '/triage'
+      fullPath: '/triage'
+      preLoaderRoute: typeof TriageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AlertsRoute: AlertsRoute,
+  FirstAidRoute: FirstAidRoute,
   HistoryRoute: HistoryRoute,
   HomeRoute: HomeRoute,
+  HospitalsRoute: HospitalsRoute,
+  ReportRoute: ReportRoute,
+  TriageRoute: TriageRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
