@@ -13,6 +13,7 @@ import {
 import { AppShell } from "@/components/AppShell";
 import { useApp } from "@/lib/i18n";
 import { ALERTS, AQI_BY_CITY, aqiBand } from "@/lib/mock-data";
+import { BAND_BG } from "@/lib/tokens";
 
 export const Route = createFileRoute("/home")({
   head: () => ({
