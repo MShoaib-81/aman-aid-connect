@@ -43,9 +43,9 @@ const tiles = [
 
 function HomePage() {
   const { t, lang, rtl } = useApp();
-  const aqi = AQI_BY_CITY.Karachi;
+  const aqi = AQI_BY_CITY["Karachi"] ?? 150;
   const band = aqiBand(aqi);
-  const alert = ALERTS[0];
+  const alert = ALERTS[0]!;
   const Chevron = rtl ? ChevronLeft : ChevronRight;
 
   return (
@@ -86,7 +86,7 @@ function HomePage() {
 
       <Link to="/aqi" className="surface mt-4 flex items-center gap-4 p-4">
         <span
-          className={`flex size-20 shrink-0 flex-col items-center justify-center rounded-full text-${band.token}-foreground bg-${band.token}`}
+          className={`flex size-20 shrink-0 flex-col items-center justify-center rounded-full ${BAND_BG[band.token]}`}
         >
           <span className="text-2xl font-extrabold">{aqi}</span>
           <span className="text-[0.6rem] font-semibold uppercase">AQI</span>
