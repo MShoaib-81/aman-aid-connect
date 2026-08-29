@@ -20,7 +20,7 @@ export function AppShell({
   const BackIcon = rtl ? ChevronRight : ChevronLeft;
 
   return (
-    <div className="min-h-screen bg-background pb-28">
+    <div className="min-h-screen bg-background pb-44">
       <header className="sticky top-0 z-30 border-b border-border bg-card/95 backdrop-blur">
         <div className="mx-auto flex max-w-lg items-center gap-2 px-3 py-3">
           {back ? (
