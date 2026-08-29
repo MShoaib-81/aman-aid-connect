@@ -80,7 +80,9 @@ function HomePage() {
           <span className="mt-1 block font-semibold">
             {lang === "en" ? alert.title : alert.titleUr}
           </span>
-          <span className="mt-1 block text-sm text-muted-foreground">{alert.time}</span>
+          <span dir="ltr" className="mt-1 block text-sm text-muted-foreground rtl:text-end">
+            {alert.time}
+          </span>
         </span>
         <Chevron className="mt-1 size-5 text-muted-foreground" aria-hidden />
       </Link>
