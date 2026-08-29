@@ -56,69 +56,75 @@ function HomePage() {
         {t("currentLocation")}: Gulshan-e-Iqbal, Karachi
       </p>
 
-      <Link
-        to="/report"
-        className="mt-4 flex w-full flex-col items-center gap-1 rounded-2xl bg-emergency px-6 py-8 text-emergency-foreground shadow-lg transition-transform active:scale-[0.99]"
-      >
-        <span className="text-4xl font-extrabold tracking-wider">{t("sos")}</span>
-        <span className="text-sm opacity-90">{t("reportEmergency")}</span>
-      </Link>
-
-      <Link
-        to="/alerts"
-        className={`mt-4 flex items-start gap-3 rounded-xl border-s-4 p-4 ${
-          alert.severity === "critical"
-            ? "border-s-emergency bg-emergency/10"
-            : "border-s-caution bg-caution/10"
-        }`}
-      >
-        <AlertTriangle className="mt-0.5 size-5 text-emergency" aria-hidden />
-        <span className="flex-1">
-          <span className="block text-xs font-bold uppercase tracking-wide text-emergency">
-            {t("activeAlert")} • {t(alert.severity)}
-          </span>
-          <span className="mt-1 block font-semibold">
-            {lang === "en" ? alert.title : alert.titleUr}
-          </span>
-          <span dir="ltr" className="mt-1 block text-sm text-muted-foreground rtl:text-end">
-            {alert.time}
-          </span>
-        </span>
-        <Chevron className="mt-1 size-5 text-muted-foreground" aria-hidden />
-      </Link>
-
-      <Link to="/aqi" className="surface mt-4 flex items-center gap-4 p-4">
-        <span
-          className={`flex size-20 shrink-0 flex-col items-center justify-center rounded-full ${BAND_BG[band.token]}`}
+      <div className="mt-4 grid gap-4 lg:grid-cols-3">
+        <Link
+          to="/report"
+          className="flex w-full flex-col items-center justify-center gap-1 rounded-2xl bg-emergency px-6 py-8 text-emergency-foreground shadow-lg transition-transform active:scale-[0.99]"
         >
-          <span className="text-2xl font-extrabold">{aqi}</span>
-          <span className="text-[0.6rem] font-semibold uppercase">AQI</span>
-        </span>
-        <span className="flex-1">
-          <span className="block text-sm font-semibold text-muted-foreground">{t("liveAqi")}</span>
-          <span className="mt-0.5 block font-bold">
-            {lang === "en" ? band.label : band.labelUr}
-          </span>
-          <span className="mt-1 block text-sm text-muted-foreground">
-            {lang === "en" ? band.advice : band.adviceUr}
-          </span>
-        </span>
-      </Link>
+          <span className="text-4xl font-extrabold tracking-wider lg:text-5xl">{t("sos")}</span>
+          <span className="text-sm opacity-90">{t("reportEmergency")}</span>
+        </Link>
 
-      <h2 className="mt-6 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-        {t("quickAccess")}
-      </h2>
-      <div className="mt-3 grid grid-cols-2 gap-3">
-        {tiles.map(({ to, icon: Icon, key }) => (
-          <Link
-            key={to}
-            to={to}
-            className="surface flex min-h-24 flex-col justify-between p-4 transition-colors active:bg-accent"
+        <Link
+          to="/alerts"
+          className={`flex items-start gap-3 rounded-xl border-s-4 p-4 lg:col-span-2 lg:p-6 ${
+            alert.severity === "critical"
+              ? "border-s-emergency bg-emergency/10"
+              : "border-s-caution bg-caution/10"
+          }`}
+        >
+          <AlertTriangle className="mt-0.5 size-5 shrink-0 text-emergency" aria-hidden />
+          <span className="min-w-0 flex-1">
+            <span className="block text-xs font-bold uppercase tracking-wide text-emergency">
+              {t("activeAlert")} • {t(alert.severity)}
+            </span>
+            <span className="mt-1 block font-semibold">
+              {lang === "en" ? alert.title : alert.titleUr}
+            </span>
+            <span dir="ltr" className="mt-1 block text-sm text-muted-foreground rtl:text-end">
+              {alert.time}
+            </span>
+          </span>
+          <Chevron className="mt-1 size-5 shrink-0 text-muted-foreground" aria-hidden />
+        </Link>
+      </div>
+
+      <div className="mt-4 grid gap-4 lg:grid-cols-3">
+        <Link to="/aqi" className="surface flex items-center gap-4 p-4 lg:flex-col lg:items-start lg:p-6">
+          <span
+            className={`flex size-20 shrink-0 flex-col items-center justify-center rounded-full ${BAND_BG[band.token]}`}
           >
-            <Icon className="size-7 text-primary" aria-hidden />
-            <span className="mt-2 font-semibold leading-snug">{t(key)}</span>
-          </Link>
-        ))}
+            <span className="text-2xl font-extrabold">{aqi}</span>
+            <span className="text-[0.6rem] font-semibold uppercase">AQI</span>
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="block text-sm font-semibold text-muted-foreground">{t("liveAqi")}</span>
+            <span className="mt-0.5 block font-bold">
+              {lang === "en" ? band.label : band.labelUr}
+            </span>
+            <span className="mt-1 block text-sm text-muted-foreground">
+              {lang === "en" ? band.advice : band.adviceUr}
+            </span>
+          </span>
+        </Link>
+
+        <section className="lg:col-span-2">
+          <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+            {t("quickAccess")}
+          </h2>
+          <div className="mt-3 grid grid-cols-2 gap-3 md:grid-cols-3">
+            {tiles.map(({ to, icon: Icon, key }) => (
+              <Link
+                key={to}
+                to={to}
+                className="surface flex min-h-24 flex-col justify-between p-4 transition-colors hover:bg-accent active:bg-accent"
+              >
+                <Icon className="size-7 text-primary" aria-hidden />
+                <span className="mt-2 font-semibold leading-snug">{t(key)}</span>
+              </Link>
+            ))}
+          </div>
+        </section>
       </div>
     </AppShell>
   );
