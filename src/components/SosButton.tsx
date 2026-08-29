@@ -22,13 +22,13 @@ export function SosButton() {
         type="button"
         onClick={() => setOpen(true)}
         aria-label={t("sos")}
-        className="sos-pulse fixed bottom-24 end-4 z-50 flex size-16 flex-col items-center justify-center rounded-full bg-emergency text-emergency-foreground shadow-lg ring-4 ring-background transition-transform active:scale-95"
+        className="sos-pulse fixed bottom-24 end-4 z-50 flex size-16 flex-col items-center justify-center rounded-full bg-emergency text-emergency-foreground shadow-lg ring-4 ring-background transition-transform active:scale-95 lg:bottom-8 lg:end-8 lg:size-20"
       >
         <span className="text-base font-extrabold tracking-wide">{t("sos")}</span>
       </button>
 
       {open && (
-        <div className="fixed inset-0 z-50 flex items-end justify-center bg-foreground/60 p-4 backdrop-blur-sm">
+        <div className="fixed inset-0 z-50 flex items-end justify-center bg-foreground/60 p-4 backdrop-blur-sm sm:items-center">
           <div className="surface w-full max-w-md p-5 text-center">
             <div className="mx-auto mb-4 flex size-16 items-center justify-center rounded-full bg-emergency text-emergency-foreground">
               <PhoneCall className="size-8" aria-hidden />
