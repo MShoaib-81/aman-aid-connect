@@ -13,6 +13,7 @@ import {
 import { AppShell } from "@/components/AppShell";
 import { useApp } from "@/lib/i18n";
 import { ALERTS, AQI_BY_CITY, aqiBand } from "@/lib/mock-data";
+import { BAND_BG } from "@/lib/tokens";
 
 export const Route = createFileRoute("/home")({
   head: () => ({
@@ -43,9 +44,9 @@ const tiles = [
 
 function HomePage() {
   const { t, lang, rtl } = useApp();
-  const aqi = AQI_BY_CITY.Karachi;
+  const aqi = AQI_BY_CITY["Karachi"] ?? 150;
   const band = aqiBand(aqi);
-  const alert = ALERTS[0];
+  const alert = ALERTS[0]!;
   const Chevron = rtl ? ChevronLeft : ChevronRight;
 
   return (
@@ -79,14 +80,16 @@ function HomePage() {
           <span className="mt-1 block font-semibold">
             {lang === "en" ? alert.title : alert.titleUr}
           </span>
-          <span className="mt-1 block text-sm text-muted-foreground">{alert.time}</span>
+          <span dir="ltr" className="mt-1 block text-sm text-muted-foreground rtl:text-end">
+            {alert.time}
+          </span>
         </span>
         <Chevron className="mt-1 size-5 text-muted-foreground" aria-hidden />
       </Link>
 
       <Link to="/aqi" className="surface mt-4 flex items-center gap-4 p-4">
         <span
-          className={`flex size-20 shrink-0 flex-col items-center justify-center rounded-full text-${band.token}-foreground bg-${band.token}`}
+          className={`flex size-20 shrink-0 flex-col items-center justify-center rounded-full ${BAND_BG[band.token]}`}
         >
           <span className="text-2xl font-extrabold">{aqi}</span>
           <span className="text-[0.6rem] font-semibold uppercase">AQI</span>
