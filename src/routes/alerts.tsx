@@ -40,7 +40,7 @@ function AlertsPage() {
               </span>
               <span className="flex items-center gap-1 text-xs text-muted-foreground">
                 <Clock className="size-3.5" aria-hidden />
-                {a.time}
+                <span dir="ltr">{a.time}</span>
               </span>
             </div>
             <h2 className="mt-3 flex items-start gap-2 font-bold">
