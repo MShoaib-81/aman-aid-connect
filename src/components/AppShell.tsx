@@ -11,7 +11,7 @@ export function AppShell({
   children,
   back,
   showSettings = true,
-  maxWidth = "max-w-lg lg:max-w-6xl",
+  maxWidth = "max-w-lg md:max-w-3xl lg:max-w-6xl",
 }: {
   title: string;
   children: ReactNode;

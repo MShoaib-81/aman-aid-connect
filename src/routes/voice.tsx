@@ -54,7 +54,7 @@ function VoicePage() {
   const demo = DEMO[lang];
 
   return (
-    <AppShell title={t("voiceAssistant")} back="/home" maxWidth="max-w-lg lg:max-w-3xl">
+    <AppShell title={t("voiceAssistant")} back="/home" maxWidth="max-w-lg md:max-w-2xl lg:max-w-3xl">
       <div className="flex flex-col items-center py-6">
         <button
           type="button"
