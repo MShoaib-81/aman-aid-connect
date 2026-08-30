@@ -1,5 +1,6 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { ShieldCheck, Check } from "lucide-react";
+import { AmbientBackground } from "@/components/AmbientBackground";
 import { LANGS, useApp, type Lang } from "@/lib/i18n";
 
 export const Route = createFileRoute("/")({
@@ -26,7 +27,8 @@ function Splash() {
   const navigate = useNavigate();
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-between bg-background px-6 py-10">
+    <div className="relative flex min-h-screen flex-col items-center justify-between px-6 py-10">
+      <AmbientBackground />
       <div className="flex flex-1 flex-col items-center justify-center text-center">
         <div className="flex size-20 items-center justify-center rounded-3xl bg-primary text-primary-foreground shadow-lg">
           <ShieldCheck className="size-11" aria-hidden />

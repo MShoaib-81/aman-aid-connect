@@ -181,3 +181,104 @@
 @utility wave-bar {
   animation: wave-bar 1s ease-in-out infinite;
 }
+
+/* ---------- Ambient decorative background ---------- */
+@keyframes ambient-drift-a {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(6vw, 5vh, 0) scale(1.12);
+  }
+}
+
+@keyframes ambient-drift-b {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1.05);
+  }
+  50% {
+    transform: translate3d(-7vw, -4vh, 0) scale(0.92);
+  }
+}
+
+@keyframes ambient-drift-c {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(0.95);
+  }
+  50% {
+    transform: translate3d(4vw, -6vh, 0) scale(1.15);
+  }
+}
+
+@keyframes ambient-grid-pan {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 48px 48px;
+  }
+}
+
+.ambient-bg .ambient-orb {
+  position: absolute;
+  display: block;
+  border-radius: 9999px;
+  filter: blur(80px);
+  will-change: transform;
+}
+
+.ambient-bg .ambient-orb-1 {
+  inset-inline-start: -12vw;
+  top: -10vh;
+  width: 46vw;
+  height: 46vw;
+  min-width: 320px;
+  min-height: 320px;
+  background: color-mix(in oklab, var(--primary) 22%, transparent);
+  animation: ambient-drift-a 26s ease-in-out infinite;
+}
+
+.ambient-bg .ambient-orb-2 {
+  inset-inline-end: -14vw;
+  top: 22vh;
+  width: 40vw;
+  height: 40vw;
+  min-width: 280px;
+  min-height: 280px;
+  background: color-mix(in oklab, var(--safe) 16%, transparent);
+  animation: ambient-drift-b 34s ease-in-out infinite;
+}
+
+.ambient-bg .ambient-orb-3 {
+  inset-inline-start: 20vw;
+  bottom: -18vh;
+  width: 44vw;
+  height: 44vw;
+  min-width: 300px;
+  min-height: 300px;
+  background: color-mix(in oklab, var(--caution) 14%, transparent);
+  animation: ambient-drift-c 30s ease-in-out infinite;
+}
+
+.ambient-bg .ambient-grid {
+  position: absolute;
+  inset: -48px;
+  display: block;
+  opacity: 0.35;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at 50% 30%, #000 0%, transparent 72%);
+  animation: ambient-grid-pan 40s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient-bg .ambient-orb,
+  .ambient-bg .ambient-grid {
+    animation: none;
+  }
+}
