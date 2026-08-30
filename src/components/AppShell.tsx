@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { ChevronLeft, ChevronRight, ShieldCheck, Settings as Cog } from "lucide-react";
+import { AmbientBackground } from "./AmbientBackground";
 import { BottomNav } from "./BottomNav";
 import { SideNav } from "./SideNav";
 import { SosButton } from "./SosButton";
@@ -23,8 +24,10 @@ export function AppShell({
   const BackIcon = rtl ? ChevronRight : ChevronLeft;
 
   return (
-    <div className="min-h-screen bg-background pb-44 lg:ps-64 lg:pb-16">
+    <div className="relative min-h-screen pb-44 lg:ps-64 lg:pb-16">
+      <AmbientBackground />
       <SideNav />
+
 
       <header className="sticky top-0 z-30 border-b border-border bg-card/95 backdrop-blur">
         <div className={`mx-auto flex ${maxWidth} items-center gap-2 px-3 py-3 lg:px-8 lg:py-5`}>
