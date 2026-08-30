@@ -36,7 +36,7 @@ function AqiPage() {
       <select
         value={city}
         onChange={(e) => setCity(e.target.value)}
-        className="surface tap mt-2 w-full px-3 py-3 text-base outline-none"
+        className="surface tap mt-2 w-full max-w-sm px-3 py-3 text-base outline-none"
       >
         {CITIES.map((c) => (
           <option key={c} value={c}>
@@ -45,7 +45,8 @@ function AqiPage() {
         ))}
       </select>
 
-      <div className="surface mt-4 flex flex-col items-center p-6">
+      <div className="mt-4 grid gap-4 md:grid-cols-2">
+      <div className="surface flex flex-col items-center justify-center p-6">
         <div
           className={`flex size-40 flex-col items-center justify-center rounded-full ${BAND_BG[band.token]}`}
         >
@@ -57,18 +58,20 @@ function AqiPage() {
         </p>
       </div>
 
-      <div className="surface mt-4 p-4">
+      <div className="surface p-4 md:p-6">
         <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
           {t("healthAdvice")}
         </h2>
         <p className="mt-2 leading-relaxed">{lang === "en" ? band.advice : band.adviceUr}</p>
       </div>
 
-      <div className="surface mt-4 p-4">
+      </div>
+
+      <div className="surface mt-4 p-4 lg:p-6">
         <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
           {t("trend")}
         </h2>
-        <div className="mt-3 h-52" dir="ltr">
+        <div className="mt-3 h-52 lg:h-80" dir="ltr">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={data} margin={{ top: 8, right: 8, bottom: 0, left: -18 }}>
               <XAxis
