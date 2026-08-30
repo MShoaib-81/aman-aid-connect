@@ -30,7 +30,7 @@ function SettingsPage() {
   const [toggles, setToggles] = useState({ alerts: true, aqi: true, nearby: false });
 
   return (
-    <AppShell title={t("settings")} back="/home" showSettings={false}>
+    <AppShell title={t("settings")} back="/home" showSettings={false} maxWidth="max-w-lg lg:max-w-3xl">
       <section>
         <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
           {t("language")}
