@@ -56,7 +56,7 @@ function HomePage() {
         {t("currentLocation")}: Gulshan-e-Iqbal, Karachi
       </p>
 
-      <div className="mt-4 grid gap-4 lg:grid-cols-3">
+      <div className="mt-4 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         <Link
           to="/report"
           className="flex w-full flex-col items-center justify-center gap-1 rounded-2xl bg-emergency px-6 py-8 text-emergency-foreground shadow-lg transition-transform active:scale-[0.99]"
@@ -89,7 +89,7 @@ function HomePage() {
         </Link>
       </div>
 
-      <div className="mt-4 grid gap-4 lg:grid-cols-3">
+      <div className="mt-4 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         <Link to="/aqi" className="surface flex items-center gap-4 p-4 lg:flex-col lg:items-start lg:p-6">
           <span
             className={`flex size-20 shrink-0 flex-col items-center justify-center rounded-full ${BAND_BG[band.token]}`}

@@ -29,7 +29,7 @@ function HistoryPage() {
   const { t, lang } = useApp();
   return (
     <AppShell title={t("myReports")} back="/home">
-      <ul className="grid gap-3">
+      <ul className="grid gap-3 md:grid-cols-2">
         {INCIDENTS.map((i) => (
           <li key={i.id} className="surface flex items-start gap-3 p-4">
             <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-accent">

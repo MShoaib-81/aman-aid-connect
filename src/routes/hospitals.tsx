@@ -28,7 +28,7 @@ function HospitalsPage() {
 
   return (
     <AppShell title={t("hospitals")} back="/home">
-      <div className="flex gap-2 rounded-xl bg-muted p-1">
+      <div className="flex gap-2 rounded-xl bg-muted p-1 lg:hidden">
         {(["map", "list"] as const).map((v) => (
           <button
             key={v}
@@ -44,9 +44,9 @@ function HospitalsPage() {
         ))}
       </div>
 
-      {view === "map" ? (
-        <div className="mt-4">
-          <div className="relative h-72 overflow-hidden rounded-xl border border-border bg-muted">
+      <div className="lg:grid lg:grid-cols-[1.1fr_1fr] lg:items-start lg:gap-6">
+        <div className={`mt-4 lg:sticky lg:top-28 ${view === "map" ? "" : "hidden lg:block"}`}>
+          <div className="relative h-72 overflow-hidden rounded-xl border border-border bg-muted lg:h-[32rem]">
             <div
               className="absolute inset-0 opacity-40"
               style={{
@@ -71,17 +71,23 @@ function HospitalsPage() {
               </button>
             ))}
           </div>
-          <HospitalCard hospital={active} lang={lang} t={t} />
+          <div className="lg:hidden">
+            <HospitalCard hospital={active} lang={lang} t={t} />
+          </div>
         </div>
-      ) : (
-        <ul className="mt-4 grid gap-3">
+
+        <ul
+          className={`mt-4 grid gap-3 md:grid-cols-2 lg:grid-cols-1 ${
+            view === "list" ? "" : "hidden lg:grid"
+          }`}
+        >
           {HOSPITALS.map((h) => (
             <li key={h.id}>
               <HospitalCard hospital={h} lang={lang} t={t} />
             </li>
           ))}
         </ul>
-      )}
+      </div>
     </AppShell>
   );
 }

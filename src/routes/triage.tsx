@@ -63,7 +63,7 @@ function TriagePage() {
   }
 
   return (
-    <AppShell title={t("aiTriage")} back="/home">
+    <AppShell title={t("aiTriage")} back="/home" maxWidth="max-w-lg md:max-w-2xl lg:max-w-3xl">
       <p className="text-sm text-muted-foreground">{t("triageIntro")}</p>
 
       <div className="mt-4 grid gap-3">

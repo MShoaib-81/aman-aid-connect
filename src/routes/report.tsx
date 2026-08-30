@@ -49,7 +49,7 @@ function ReportPage() {
 
   if (submittedId) {
     return (
-      <AppShell title={t("reportSubmitted")} back="/home">
+      <AppShell title={t("reportSubmitted")} back="/home" maxWidth="max-w-lg md:max-w-2xl lg:max-w-3xl">
         <div className="surface flex flex-col items-center p-6 text-center">
           <span className="flex size-16 items-center justify-center rounded-full bg-safe text-safe-foreground">
             <CheckCircle2 className="size-9" aria-hidden />
@@ -78,7 +78,7 @@ function ReportPage() {
   }
 
   return (
-    <AppShell title={t("reportEmergency")} back="/home">
+    <AppShell title={t("reportEmergency")} back="/home" maxWidth="max-w-lg md:max-w-2xl lg:max-w-3xl">
       <form
         onSubmit={(e) => {
           e.preventDefault();

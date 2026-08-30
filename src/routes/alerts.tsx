@@ -29,7 +29,7 @@ function AlertsPage() {
   const { t, lang } = useApp();
   return (
     <AppShell title={t("weatherAlerts")} back="/home">
-      <ul className="grid gap-3">
+      <ul className="grid gap-3 md:grid-cols-2">
         {ALERTS.map((a) => (
           <li key={a.id} className="surface p-4">
             <div className="flex items-center justify-between gap-2">
